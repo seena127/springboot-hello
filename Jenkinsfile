@@ -23,7 +23,7 @@ pipeline {
             steps {
                 echo "Hello Java Express"
                 sh 'ls'
-                sh 'docker build -t  bsreenu1999/docker_jenkins_springboot:${BUILD_NUMBER} .'
+                sh 'docker build -t  bsreenu1999/docker_jenkins_springboot .'
             }
         }
         stage('Docker Login'){
@@ -36,13 +36,13 @@ pipeline {
         }
         stage('Docker Push'){
             steps {
-                sh 'docker push bsreenu1999/docker_jenkins_springboot:${BUILD_NUMBER}'
+                sh 'docker push bsreenu1999/docker_jenkins_springboot'
             }
         }
         stage('Docker deploy'){
             steps {
                
-                sh 'docker run -itd -p  8081:8080 bsreenu1999/docker_jenkins_springboot:${BUILD_NUMBER}'
+                sh 'docker run -itd -p  8081:8080 bsreenu1999/docker_jenkins_springboot'
             }
         }
         stage('Archving') { 
